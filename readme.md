@@ -17,7 +17,7 @@ Libft is the first project in the 1337/42 Common Core curriculum. The goal is to
 Clone the repository and enter the project directory:
 
 ```bash
-git clone <your-repository-url>
+git clone https://github.com/Uyviiq/libft
 cd libft
 ```
 
