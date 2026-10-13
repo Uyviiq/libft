@@ -6,25 +6,23 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror
 
 SRC = $(wildcard src/*.c)
-OBJ = $(SRC:src/%.c=%.o)
+OBJ = $(SRC:src/%.c=src/%.o)
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
 	@mkdir -p lib
 	@ar rcs $(NAME) $(OBJ)
-	@rm -f $(OBJ)
 
-%.o: src/%.c
+src/%.o: src/%.c
 	@$(CC) $(CFLAGS) -Iinclude -c $< -o $@
 
-fclean:
+clean :
+	@rm -f $(OBJ)
+
+fclean: clean
 	@rm -f $(NAME)
 	@rm -rf lib
-	@rm -f $(TEST)
 
-trun:
-	@make -C ./testing
-	@./$(TEST)
+re: fclean all
 
-re: fclean tclean all
